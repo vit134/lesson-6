@@ -22,7 +22,8 @@ const path = {
 	},
 	dev: {
 		blocks: 'app/views/blocks/**/',
-		pages: 'app/views/pages/**/*.js'
+		pages: 'app/views/pages/**/*.js',
+		modules: 'app/modules/*.js'
 	}
 };
 
@@ -63,7 +64,8 @@ gulp.task('watch', function () {
 
 	watch([
 		path.dev.blocks + '*.js',
-		path.dev.pages
+		path.dev.pages,
+		path.dev.modules
 	], function () {
 		gulp.start('scripts');
 	});
