@@ -1,11 +1,11 @@
 const UpdateState = (state, action) => {
 	if (action.type === 'INCREMENT') {
-		return {count: state.count + action.amount};
-	} else if (action.type === 'DECREMENT') {
-		return {count: state.count - action.amount};
+		return {value: action.value};
+	} else if (action.type === 'LOGING') {
+		return {value: action.value};
 	} else {
 		return state;
 	}
 };
 
-exports.default = UpdateState;
+export default UpdateState;
