@@ -26,12 +26,12 @@ let _clickHandler = () => {
 };
 
 let insertLabel = () => {
-	//console.log('store changed', store.state);
+	console.log('value store changed', store.state);
 	labelBlock.innerHTML = `Сервер принял данные "<b>${store.state.value}</b>"`;
 };
 
 let log = () => {
-	//console.log('log() ',storeLog.state);
+	console.log('log store changed', storeLog.state);
 	let lastElem = storeLog.state[storeLog.state.length - 1];
 	logBlock.innerHTML += `<p>Click-${lastElem.counter}. ${lastElem.string}</p>`;
 
@@ -44,11 +44,11 @@ function randomInteger(min, max) {
 }
 
 const sendToServer = (data, clickCount) => {
-	//console.log('данные', data, 'полетели на сервер');
+	console.log('данные от клика ', clickCount,' -- ', data, 'полетели на сервер');
 	storeLog.update(actions.updateLog({counter: clickCount, data: `данные "<b>${data}</b>" полетели на сервер`}));
 
 	setTimeout(function () {
-		//console.log('пришел ответ от сервера', data);
+		console.log('данные от клика ', clickCount,' -- ', data, 'пришли с сервера');
 		storeLog.update(actions.updateLog({counter: clickCount, data: `пришел ответ от сервера "<b>${data}</b>"`}));
 		store.update(actions.updateValue(data));
 

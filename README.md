@@ -15,3 +15,11 @@
 - lint--fix: - start js lint test with fix errors
 - style-lint - start style lint test
 - style-lint--fix - start style lint test with fix errors
+
+## Структура
+
+- modules - модули фрайворка
+  - Actions.js - хранятся все возможные экшены
+  - Store.js - создание хранилища
+  - UpdateState.js - обновление состояния хранилища
+- views - страницы приложения
