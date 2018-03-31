@@ -8,17 +8,33 @@ const labelBlock = document.querySelector('.view-stub__label');
 const logBlock = document.querySelector('.view-stub__log');
 
 
-const initialState = {value: input.value || ''};
+//const initialState = {value: input.value || ''};
+const initialState = {
+	inputValue: input.value || '',
+	log: []
+};
+
 const store = new Store(UpdateState, initialState);
 
-const actions = new Actions(initialState);
+//const actions = new Actions(initialState);
 
+const actions = new Actions();
+
+console.log(actions.getActions);
+
+actions.addAction = {name: 'UPADATE_STATE'};
+
+//console.log(actions.updateValue('UPADATE_STATE', '123'));
+
+
+
+/*
 store.subscribe(() => insertLabel());
 store.subscribe(() => log());
 
 let _clickHandler = () => {
 	let inputVal = input.value;
-	store.update(actions.updateValue(inputVal));
+	sendToServer(inputVal);
 };
 
 let insertLabel = () => {
@@ -28,10 +44,28 @@ let insertLabel = () => {
 
 let log = () => {
 	console.log('log - store changed', store.state);
-	logBlock.innerHTML = store.state.value;
+	logBlock.innerHTML = store.state.log;
+};
+
+function randomInteger(min, max) {
+	let rand = min - 0.5 + Math.random() * (max - min + 1);
+	rand = Math.round(rand);
+	return rand;
+}
+
+const sendToServer = data => {
+	console.log('данные', data, 'полетели на сервер');
+
+	setTimeout(function () {
+		console.log('пришел ответ от сервера', data);
+
+		store.update(actions.updateValue(data));
+
+	}, randomInteger(500, 1500));
 };
 
 
 button.onclick =_clickHandler;
 
 
+*/

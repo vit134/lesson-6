@@ -50,5 +50,11 @@
     "lint",
     "style-lint",
     "test"
-  ]
+  ],
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "morgan": "^1.9.0",
+    "pug": "^2.0.3",
+    "serve-favicon": "^2.5.0"
+  }
 }
