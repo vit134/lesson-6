@@ -7,8 +7,8 @@
 
 ## Run 
 
-npm run build - сбилдить статику
-npm start - запустить сервер
+  - npm run build - сбилдить статику
+  - npm start - запустить сервер
 
 ## Build and lint
 - npm run build - build static files (dev enviropment, no minify)
