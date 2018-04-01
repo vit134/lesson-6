@@ -5,8 +5,12 @@
 - pug
 - gulp
 
-## Run and build
+## Run 
 
+npm run build - сбилдить статику
+npm start - запустить сервер
+
+## Build and lint
 - npm run build - build static files (dev enviropment, no minify)
 - npm run build-watch - build static files with watch
 - npm run build:prod - build static files (prod enviropment, with minify)
