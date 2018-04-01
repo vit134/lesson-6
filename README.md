@@ -8,7 +8,7 @@
 ## Run and build
 
 - npm run build - build static files (dev enviropment, no minify)
-- npm run build:dev - build static files with watch
+- npm run build-watch - build static files with watch
 - npm run build:prod - build static files (prod enviropment, with minify)
 
 - lint - start js lint test
