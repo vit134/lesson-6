@@ -15,3 +15,33 @@
 - lint--fix: - start js lint test with fix errors
 - style-lint - start style lint test
 - style-lint--fix - start style lint test with fix errors
+
+## Структура
+
+- modules - модули фрайворка
+  - FLUX
+    - Actions.js - хранятся все возможные экшены
+    - Store.js - создание хранилища
+    - UpdateState.js - обновление состояния хранилища
+  - MVP
+    - Model.js - модель
+    - Presenter.js - презентер
+    - View.js - вьюшка
+  - utils
+    - randomInt.js - рандоматор
+    - SendToServer.js - фейковая отправка на сервер
+    - togglePreloader.js - скрыть/показать прелоадер
+- views
+  - blocks
+    - view-stub.pug - основной контент страницы
+  - pages - страницы приложения с шаблонами и js
+
+
+## Страница приложения
+
+В приложении существует две страницы:
+  - FLUX реализация
+  - MVP реализация
+
+Для перехода на другую страницу можно моспользоваться ссылкой над заголовком
+
