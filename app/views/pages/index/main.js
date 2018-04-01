@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import Store from '../../../modules/Store';
 import UpdateState from '../../../modules/UpdateState';
 import Actions from '../../../modules/Actions';
