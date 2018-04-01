@@ -2,7 +2,7 @@ const UpdateState = (state, action) => {
 	if (action.type === 'INCREMENT') {
 		return {value: action.value};
 	} else if (action.type === 'LOG') {
-		state.push({counter: action.counter, string: action.string});
+		state.push({string: action.string});
 		return state;
 	} else {
 		return state;

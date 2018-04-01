@@ -1,2 +1,4 @@
-/* eslint-disable no-console */
-console.log('mvp');
+import View from '../../../modules/mvp/View';
+
+
+new View(document.querySelector('body'));

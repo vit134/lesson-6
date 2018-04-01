@@ -1,11 +1,13 @@
 /* eslint-disable no-console */
-import Store from '../../../modules/Store';
-import UpdateState from '../../../modules/UpdateState';
-import Actions from '../../../modules/Actions';
+import Store from '../../../modules/flux/Store';
+import UpdateState from '../../../modules/flux/UpdateState';
+import Actions from '../../../modules/flux/Actions';
+import SendToServer from '../../../modules/utils/SendToServer';
+import togglePreloader from '../../../modules/utils/togglePreloader';
 
 const input = document.querySelector('.view-stub__input');
 const button = document.querySelector('.view-stub__apply');
-const labelBlock = document.querySelector('.view-stub__label');
+const labelBlock = document.querySelector('.view-stub__label p');
 const logBlock = document.querySelector('.view-stub__log');
 
 const initialStateValue = {value: input.value || ''};
@@ -16,14 +18,26 @@ const storeLog = new Store(UpdateState, initialStateLog);
 
 const actions = new Actions();
 
-let clickCount = 0;
-
 store.subscribe(() => insertLabel());
 storeLog.subscribe(() => log());
 
 let _clickHandler = () => {
 	let inputVal = input.value;
-	sendToServer(inputVal, ++clickCount);
+
+	input.value = '';
+
+	console.log('данные', inputVal, 'полетели на сервер');
+	storeLog.update(actions.updateLog({data: `данные "<b>${inputVal}</b>" полетели на сервер`}));
+
+	togglePreloader(document);
+
+	SendToServer(inputVal)
+		.then((data) => {
+			console.log('данные ', data, 'пришли с сервера');
+			storeLog.update(actions.updateLog({data: `пришел ответ от сервера "<b>${data}</b>"`}));
+			store.update(actions.updateValue(data));
+			togglePreloader(document);
+		});
 };
 
 let insertLabel = () => {
@@ -34,28 +48,8 @@ let insertLabel = () => {
 let log = () => {
 	console.log('log store changed', storeLog.state);
 	let lastElem = storeLog.state[storeLog.state.length - 1];
-	logBlock.innerHTML += `<p>Click-${lastElem.counter}. ${lastElem.string}</p>`;
-
+	logBlock.innerHTML += `<p>${lastElem.string}</p>`;
 };
-
-function randomInteger(min, max) {
-	let rand = min - 0.5 + Math.random() * (max - min + 1);
-	rand = Math.round(rand);
-	return rand;
-}
-
-const sendToServer = (data, clickCount) => {
-	console.log('данные от клика ', clickCount,' -- ', data, 'полетели на сервер');
-	storeLog.update(actions.updateLog({counter: clickCount, data: `данные "<b>${data}</b>" полетели на сервер`}));
-
-	setTimeout(function () {
-		console.log('данные от клика ', clickCount,' -- ', data, 'пришли с сервера');
-		storeLog.update(actions.updateLog({counter: clickCount, data: `пришел ответ от сервера "<b>${data}</b>"`}));
-		store.update(actions.updateValue(data));
-
-	}, randomInteger(2000, 5000));
-};
-
 
 button.onclick = _clickHandler;
 
