@@ -4,7 +4,7 @@
   "description": "Задание по архитектуре для ШРИ-2018",
   "main": "index.js",
   "scripts": {
-    "webpack": "webpack --mode development ./app/views/pages/index/main.js --output ./app/dist/scripts/index/main.js --watch",
+    "webpack": "webpack --mode development --watch",
     "lint": "./node_modules/.bin/eslint . --ignore-path .gitignore",
     "lint--fix": "./node_modules/.bin/eslint . --ignore-path .gitignore --fix",
     "style-lint": "stylelint '**/*.less'",
